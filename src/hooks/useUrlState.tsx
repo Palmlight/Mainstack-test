@@ -74,12 +74,22 @@ export const useUrlState = () => {
       setParam(param);
     }
   };
+  const clearMultipleQueryParam = (names: string[]) => {
+    names.forEach(name => {
+      const parameter = param.get(name);
+      if (parameter) {
+        param.delete(name);
+      }
+    });
+    setParam(param);
+  };
 
   return {
     input,
     value,
     valueArr,
     clearQueryParam,
+    clearMultipleQueryParam,
     onChange,
     changeMultiple: (args: Record<string, string | string[]>) => {
       Object.entries(args).forEach(([key, value]) => {

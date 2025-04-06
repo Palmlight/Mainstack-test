@@ -29,7 +29,9 @@ const Button = ({
           "rounded-full bg-[#131316] text-white font-semibold":
             variant === "primary",
           "rounded-full bg-[#EFF1F6] font-semibold text-[#131316]":
-            variant === "secondary"
+            variant === "secondary",
+          "rounded-full bg-white border border-[#EFF1F6] text-[#131316] font-semibold":
+            variant === "tertiary"
         },
         className
       )}

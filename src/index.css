@@ -25,3 +25,15 @@ body {
 
   backdrop-filter: blur(1px);
 }
+
+.datepicker {
+  width: 100%;
+}
+
+.dropdown-shadow {
+  box-shadow: 0px 6px 12px 0px #5c738314, 0px 4px 8px 0px #5c738314;
+}
+
+.quick-links {
+  box-shadow: 0px 6px 12px 0px #5c738314, 0px 4px 8px 0px #5c738314;
+}

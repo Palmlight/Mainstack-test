@@ -1,3 +1,4 @@
+import { useUrlState } from "../../hooks/useUrlState";
 import { ITransaction } from "../../interfaces/transactions.interface";
 import Button from "../Button/Button";
 import TransactionItem from "./TransactionItem";
@@ -7,6 +8,7 @@ const TransactionListing = ({
 }: {
   transactions: ITransaction[];
 }) => {
+  const { clearMultipleQueryParam } = useUrlState();
   return (
     <section className="space-y-6 mt-10">
       {!transactions?.length && (
@@ -25,7 +27,18 @@ const TransactionListing = ({
             </h3>
           </div>
 
-          <Button className="w-[120px] h-12" variant="secondary">
+          <Button
+            className="w-[120px] h-12"
+            variant="secondary"
+            onClick={() => {
+              clearMultipleQueryParam([
+                "startDate",
+                "endDate",
+                "status",
+                "types"
+              ]);
+            }}
+          >
             Clear Filter
           </Button>
         </div>

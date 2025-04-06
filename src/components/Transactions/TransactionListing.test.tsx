@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import TransactionListing from "./TransactionListing";
+import { withMemoryRouter } from "../../test";
 
 const mockTransactions = [
   {
@@ -37,7 +38,7 @@ const mockTransactions = [
 
 describe("TransactionListing Component", () => {
   it("renders the empty state when no transactions are provided", () => {
-    render(<TransactionListing transactions={[]} />);
+    render(withMemoryRouter(<TransactionListing transactions={[]} />));
 
     expect(
       screen.getByText("No matching transaction found for the selected filter")
@@ -53,7 +54,9 @@ describe("TransactionListing Component", () => {
   });
 
   it("renders a list of transactions when transactions are provided", () => {
-    render(<TransactionListing transactions={mockTransactions} />);
+    render(
+      withMemoryRouter(<TransactionListing transactions={mockTransactions} />)
+    );
 
     expect(screen.getAllByText("John Doe").length).toBe(2);
     expect(screen.getAllByText("Rich Dad Poor Dad").length).toBe(2);

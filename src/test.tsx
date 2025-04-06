@@ -1,5 +1,6 @@
 import "@testing-library/jest-dom";
 import { vi } from "vitest";
+import { MemoryRouter } from "react-router-dom";
 
 class ResizeObserver {
   observe() {}
@@ -18,3 +19,8 @@ vi.mock("recharts", () => ({
   Line: () => <div data-testid="line" />,
   XAxis: () => <div data-testid="x-axis" />
 }));
+
+export const withMemoryRouter = (
+  ui: React.ReactNode,
+  initialEntries = ["/"]
+) => <MemoryRouter initialEntries={initialEntries}>{ui}</MemoryRouter>;

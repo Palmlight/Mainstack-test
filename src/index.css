@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@import url("./styles/Degular/Degular.css");
+
+body {
+  font-family: "Degular", sans-serif;
+}
+
+@layer components {
+  .main-container {
+    @apply mx-auto px-4 w-full max-w-[1424px];
+  }
+
+  .inner-container {
+    @apply mx-auto w-full max-w-[1159px];
+  }
+}
+
+.nav-shadow {
+  box-shadow: 0px 2px 4px 0px #2d3b430d, 0px 2px 6px 0px #2d3b430f;
+}
+
+.side-modal {
+  box-shadow: 0px 8px 16px 4px #bcc4cc1a, 0px 12px 24px 0px #dbdee51a,
+    0px 16px 32px 0px #dbdee51a;
+
+  backdrop-filter: blur(1px);
+}

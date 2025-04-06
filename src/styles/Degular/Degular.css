@@ -1,0 +1,55 @@
+@font-face {
+  font-family: "Degular";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("./DegularText-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Degular";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./DegularText-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Degular";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./DegularText-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Degular";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("./DegularText-Semibold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Degular";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./DegularText-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Degular";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("./DegularText-Black.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Degular";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("./DegularText-Black.otf") format("opentype");
+}

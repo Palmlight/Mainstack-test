@@ -54,18 +54,16 @@ const FilterDrawer = () => {
 
   const form = useFormik({
     initialValues: {
-      startDate: value("startDate", new Date().toISOString()),
-      endDate: value("endDate", new Date().toISOString()),
-      types: value("type", "")
+      startDate: value("startDate"),
+      endDate: value("endDate")
     },
     onSubmit: values => {
       changeMultiple({
-        startDate: values.startDate,
-        endDate: values.endDate,
-        status: statuses,
-        types: transactionTypes
+        startDate: values.startDate || "",
+        endDate: values.endDate || "",
+        types: transactionTypes,
+        status: statuses
       });
-      handleClose();
     }
   });
 

@@ -24,7 +24,12 @@ const App = () => {
 
         <div className="absolute left-2 top-[270px] py-1 gap-1 flex flex-col rounded-full w-12 bg-white quick-links">
           {quickLinks?.map(link => (
-            <img src={link} alt="Alt link" className="cursor-pointer" />
+            <img
+              src={link}
+              alt="Alt link"
+              className="cursor-pointer"
+              key={link}
+            />
           ))}
         </div>
       </div>

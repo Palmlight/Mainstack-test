@@ -41,7 +41,7 @@ const CustomDatePicker = ({
     <div className="">
       <DatePicker
         wrapperClassName="w-full"
-        selected={value as unknown as Date}
+        selected={value ? new Date(value) : new Date()}
         onChange={date => onChange(String(date))}
         customInput={<CustomInput className="w-full" value={value} />}
       />

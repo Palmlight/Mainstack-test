@@ -22,18 +22,29 @@ export const useUrlState = () => {
     param.get(name) || defaultValue || "";
 
   const valueArr = (name: string) => param.getAll(name) ?? [];
+
   const setToBatch = (name: string, value: string | string[]) => {
-    setBatchChanges(prev => {
-      const newState = new URLSearchParams(prev ?? {});
+    const newChanges = () => {
+      const newState = new URLSearchParams(batchChanges ?? {});
+
       if (Array.isArray(value)) {
         newState.delete(name);
-        value.forEach(v => newState.append(name, v));
-      } else {
+
+        value
+          .filter(v => v !== null && v !== undefined && v !== "")
+          .forEach(v => newState.append(name, v));
+      } else if (value !== null && value !== undefined && value !== "") {
         newState.set(name, value);
+      } else {
+        newState.delete(name);
       }
+
       return newState;
-    });
+    };
+
+    setBatchChanges(newChanges());
   };
+
   const onChange =
     (name: string) =>
     (
@@ -60,9 +71,22 @@ export const useUrlState = () => {
         });
         setBatchChanges(null);
       } else {
-        setToBatch(name, value);
+        const newState = new URLSearchParams(param);
+        if (Array.isArray(value)) {
+          newState.delete(name);
+          value
+            .filter(v => v !== null && v !== undefined && v !== "")
+            .forEach(v => newState.append(name, v));
+        } else if (value !== null && value !== undefined && value !== "") {
+          newState.set(name, value);
+        } else {
+          newState.delete(name);
+        }
+
+        setParam(newState);
       }
     };
+
   const input = (name: string, defaultValue?: string) => ({
     value: value(name, defaultValue),
     onChange: onChange(name)
@@ -92,9 +116,21 @@ export const useUrlState = () => {
     clearMultipleQueryParam,
     onChange,
     changeMultiple: (args: Record<string, string | string[]>) => {
+      const newParams = new URLSearchParams(param);
       Object.entries(args).forEach(([key, value]) => {
-        onChange(key)(value);
+        if (Array.isArray(value)) {
+          newParams.delete(key);
+          value
+            .filter(v => v !== null && v !== undefined && v !== "")
+            .forEach(v => newParams.append(key, v));
+        } else if (value !== null && value !== undefined && value !== "") {
+          newParams.set(key, value);
+        } else {
+          newParams.delete(key);
+        }
       });
+
+      setParam(newParams);
     }
   };
 };
